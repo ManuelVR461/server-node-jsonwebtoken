@@ -3,7 +3,8 @@ const jwt = require('jsonwebtoken');
 const auth = {};
 
 auth.createToken = (req,res,user) => {
-    return jwt.sign({user},req.app.get('keySecret'));
+    const expiresIn = 2 * 60; // 24 * 60 * 60
+    return jwt.sign({user},req.app.get('keySecret'),{expiresIn:expiresIn});   
 }
 
 auth.authenticator = (req,res,next) => {
@@ -21,10 +22,7 @@ auth.authenticator = (req,res,next) => {
             }
         });
     } else {
-        return res.status(403).send({
-            success:false,
-            message: 'No existe token'
-        });
+        return res.status(403).send({success:false,message: 'No existe token'});
     }
 }
 

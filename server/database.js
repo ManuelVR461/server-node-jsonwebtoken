@@ -3,7 +3,7 @@ const config = require('./config');
 
 mongoose.connect(config.database, {useNewUrlParser: true});
 mongoose.Promise = global.Promise;
-
+mongoose.set('useCreateIndex', true);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {

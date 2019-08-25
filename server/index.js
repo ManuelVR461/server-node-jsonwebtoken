@@ -13,7 +13,7 @@ const app = express();
 
 //setting
 const PORT = process.env.PORT || 3000
-app.set('keySecret' , config.secret);
+app.set('keySecret' , config.TOKEN_SECRET);
 
 //middleware
 app.use(morgan('dev'));

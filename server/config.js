@@ -1,4 +1,6 @@
+'use strict'
+
 module.exports = {
-    'secret': 'llave_secreta',
+    TOKEN_SECRET:  process.env.TOKEN_SECRET || 'llave_secreta',
     'database':'mongodb://localhost/dbcursojwt'
 };
